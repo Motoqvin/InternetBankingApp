@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: mypostgres
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=elvin
+      - POSTGRES_PASSWORD=Elv123!
+      - POSTGRES_DB=BankDB
+    restart: always
