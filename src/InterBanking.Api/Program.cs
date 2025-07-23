@@ -4,6 +4,7 @@ using Api.Repositories;
 using InterBanking.Api.Repositories.Base;
 using InterBanking.Api.Services;
 using InterBanking.Api.Services.Base;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,13 +18,15 @@ builder.Services.AddAutoMapper((cfg) =>
     cfg.AddMaps(Assembly.GetExecutingAssembly());
 });
 
+builder.Services.AddDbContext<InterDbContext>(options =>
+{
+    options.UseNpgsql( "Host=db;Port=5432;Database=postgres;Username=postgres;Password=mysecretpassword;");
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<InterDbContext>();
-
 var app = builder.Build();
-
 
 app.UseHttpsRedirection();
 

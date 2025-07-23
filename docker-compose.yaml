@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:latest
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    restart: always
+    
+volumes:
+  db:
