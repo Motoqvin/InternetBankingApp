@@ -19,9 +19,7 @@ builder.Services.AddAutoMapper((cfg) =>
 });
 
 builder.Services.AddDbContext<InterDbContext>(options =>
-{
-    options.UseNpgsql( "Host=db;Port=5432;Database=postgres;Username=postgres;Password=mysecretpassword;");
-});
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

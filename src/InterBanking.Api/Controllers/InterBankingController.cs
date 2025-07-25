@@ -1,5 +1,7 @@
+using System.Net;
 using System.Threading.Tasks;
 using InterBanking.Api.Dtos;
+using InterBanking.Api.Responses;
 using InterBanking.Api.Services.Base;
 using Microsoft.AspNetCore.Mvc;
 using UAParser;
@@ -8,6 +10,10 @@ namespace InterBanking.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
+[ProducesResponseType((int)HttpStatusCode.InternalServerError, Type = typeof(InternalServerErrorResponse))]
+[ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(BadRequestResponse))]
+[ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(NotFoundResponse))]
+[ProducesResponseType((int)HttpStatusCode.OK)]
 public class InterBankingController : ControllerBase
 {
     private readonly IInterBankingService interBankingService;

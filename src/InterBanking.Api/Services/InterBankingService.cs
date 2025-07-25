@@ -119,6 +119,11 @@ public class InterBankingService : IInterBankingService
 
 
         resp = Mapper.Map<User, UserResponseDto>(user);
+        if (resp.ClientCode == null)
+        {
+            throw new NotFoundException() { ParamName = nameof(User) };
+        }
+
         resp.StatusCode = StatusCode.Ok;
 
         return resp;
@@ -223,4 +228,7 @@ public class InterBankingService : IInterBankingService
 
         return mistakes;
     }
+
+
+    
 }
