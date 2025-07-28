@@ -1,6 +1,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using InterBanking.Api.Dtos;
+using InterBanking.Api.Exceptions;
 using InterBanking.Api.Responses;
 using InterBanking.Api.Services.Base;
 using Microsoft.AspNetCore.Mvc;

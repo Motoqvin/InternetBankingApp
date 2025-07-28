@@ -5,6 +5,7 @@ using InterBanking.Api.Repositories.Base;
 using InterBanking.Api.Services;
 using InterBanking.Api.Services.Base;
 using Microsoft.EntityFrameworkCore;
+using InterBanking.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();
 
 if (app.Environment.IsDevelopment())

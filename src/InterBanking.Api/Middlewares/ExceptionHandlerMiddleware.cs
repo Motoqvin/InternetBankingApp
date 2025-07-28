@@ -1,4 +1,3 @@
-using InterBanking.Api.Enums;
 using InterBanking.Api.Exceptions;
 using InterBanking.Api.Responses;
 
